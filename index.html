@@ -1071,6 +1071,325 @@
       }
     }
 
+    /* Dedicated Mobile Optimization (Smartphones <= 640px) */
+    @media (max-width: 640px) {
+      html, body {
+        overflow-x: hidden;
+      }
+
+      .container {
+        padding: 0 16px;
+      }
+
+      /* Header & Branding */
+      header.site-header {
+        padding: 10px 0;
+      }
+      .header-inner {
+        height: auto;
+      }
+      .logo-area {
+        gap: 10px;
+      }
+      .logo-area img {
+        height: 36px;
+      }
+      .logo-divider {
+        height: 22px;
+      }
+      .portal-tag {
+        font-size: 11px;
+        letter-spacing: 0.5px;
+      }
+
+      /* Announcement Bar */
+      .announcement-bar {
+        font-size: 11.5px;
+        padding: 8px 12px;
+        line-height: 1.45;
+      }
+      .announcement-bar .pill {
+        display: inline-block;
+        margin-bottom: 4px;
+        font-size: 10px;
+        padding: 2px 8px;
+      }
+
+      /* Hero Section */
+      section.hero {
+        padding: 35px 0 32px 0;
+      }
+      .hero-price-badge {
+        flex-direction: column;
+        gap: 2px;
+        padding: 8px 16px;
+        border-radius: 18px;
+        max-width: 290px;
+        margin: 0 auto 16px auto;
+      }
+      .hero-price-amount {
+        font-size: 22px;
+      }
+      .hero-price-label {
+        font-size: 11px;
+        letter-spacing: 0.4px;
+      }
+      .hero h1 {
+        font-size: 23px;
+        line-height: 1.25;
+        margin-bottom: 12px;
+      }
+      .hero-bullet-wrapper {
+        margin: 16px 0 20px 0;
+        width: 100%;
+      }
+      .hero-bullet-lines {
+        width: 100%;
+        padding: 14px 14px;
+        gap: 10px;
+        border-radius: 10px;
+      }
+      .hero-bullet-line {
+        font-size: 13.5px;
+        gap: 8px;
+        line-height: 1.35;
+        align-items: flex-start;
+      }
+      .hero-bullet-line .check-icon {
+        width: 18px;
+        height: 18px;
+        font-size: 10px;
+        margin-top: 1px;
+      }
+      .hero p.lead {
+        font-size: 13.5px;
+        line-height: 1.55;
+        margin-bottom: 20px;
+      }
+      .hero-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+      }
+      .btn-primary, .btn-secondary {
+        width: 100%;
+        padding: 14px 16px;
+        font-size: 14px;
+        text-align: center;
+        box-sizing: border-box;
+      }
+      .roi-strip {
+        margin: 18px auto 0 auto;
+        padding: 12px 14px;
+        font-size: 12.5px;
+        text-align: left;
+        line-height: 1.5;
+      }
+
+      /* Sections & Titles */
+      section.comparison, 
+      section.pillars, 
+      section.proof, 
+      section.pricing, 
+      section.enrollment, 
+      section.faq {
+        padding: 42px 0;
+      }
+      .section-title-area {
+        margin-bottom: 24px;
+      }
+      .section-title {
+        font-size: 22px;
+        line-height: 1.25;
+        margin-bottom: 8px;
+      }
+      .section-subtitle {
+        font-size: 13.5px;
+        line-height: 1.5;
+      }
+
+      /* Cards & Grids */
+      .comp-card {
+        padding: 20px 16px;
+      }
+      .comp-card h3 {
+        font-size: 18px;
+        margin-bottom: 12px;
+      }
+      .comp-list li {
+        font-size: 13px;
+        margin-bottom: 10px;
+        gap: 8px;
+      }
+      .pillar-card {
+        padding: 20px 16px;
+      }
+      .pillar-card h3 {
+        font-size: 17px;
+        margin-bottom: 8px;
+      }
+      .pillar-card p {
+        font-size: 13px;
+        line-height: 1.55;
+      }
+      .how-it-works-box {
+        padding: 20px 16px;
+        margin-top: 24px;
+      }
+      .how-it-works-title h3 {
+        font-size: 18px;
+      }
+      .step-item {
+        padding: 16px 14px;
+      }
+      .step-item h4 {
+        font-size: 15px;
+      }
+      .step-item p {
+        font-size: 12.5px;
+      }
+
+      /* Proof Banner */
+      .proof-banner {
+        padding: 24px 16px;
+        gap: 22px;
+        border-radius: 12px;
+      }
+      .proof-banner h3 {
+        font-size: 20px;
+        line-height: 1.3;
+      }
+      .proof-banner p {
+        font-size: 13px;
+        line-height: 1.55;
+      }
+      .proof-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+      .stat-box {
+        padding: 12px 8px;
+      }
+      .stat-number {
+        font-size: 24px;
+      }
+      .stat-label {
+        font-size: 10px;
+      }
+
+      /* Pricing Cards */
+      .pricing-header {
+        padding: 20px 16px 14px 16px;
+      }
+      .pricing-plan-title {
+        font-size: 16px;
+      }
+      .pricing-price {
+        font-size: 30px;
+      }
+      .pricing-body {
+        padding: 16px;
+      }
+      .pricing-features li {
+        font-size: 12.5px;
+        margin-bottom: 9px;
+        gap: 8px;
+      }
+      .pricing-footer {
+        padding: 0 16px 18px 16px;
+      }
+      .pricing-note-box {
+        padding: 14px 14px;
+        font-size: 12.5px;
+        margin-top: 22px;
+      }
+
+      /* Enrollment Form */
+      .enrollment-wrapper {
+        padding: 20px 14px;
+        border-radius: 12px;
+      }
+      .form-group {
+        margin-bottom: 14px;
+      }
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      .plan-radio-label {
+        padding: 10px 12px;
+        font-size: 13px;
+        align-items: flex-start;
+      }
+      .plan-radio-label input {
+        margin-top: 2px;
+      }
+      .cost-preview {
+        padding: 12px 14px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+        margin: 16px 0;
+      }
+      .cost-preview-val {
+        font-size: 20px;
+      }
+      .btn-submit {
+        padding: 14px 16px;
+        font-size: 14px;
+      }
+
+      /* FAQ */
+      .faq-item {
+        padding: 16px 14px;
+      }
+      .faq-item h4 {
+        font-size: 14.5px;
+      }
+      .faq-item p {
+        font-size: 13px;
+      }
+
+      /* Footer */
+      footer.site-footer {
+        padding: 30px 16px 22px 16px;
+      }
+      .footer-links {
+        flex-direction: column;
+        gap: 8px;
+        align-items: center;
+      }
+
+      /* Payment Modal */
+      .modal-overlay {
+        padding: 8px;
+      }
+      .modal-dialog {
+        max-height: 94vh;
+        border-radius: 12px;
+        width: 100%;
+        margin: 0;
+      }
+      .modal-header {
+        padding: 14px 16px;
+      }
+      .modal-header h3 {
+        font-size: 16px;
+      }
+      .modal-body {
+        padding: 14px 12px 20px 12px;
+      }
+      .modal-summary-bar {
+        padding: 10px 12px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+      }
+      .modal-summary-amount {
+        font-size: 17px;
+      }
+    }
+
     /* Modal Pop-up */
     .modal-overlay {
       position: fixed;
