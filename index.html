@@ -1134,7 +1134,7 @@
       </div>
 
       <p class="lead">
-        We handle your <strong>personalized monthly newsletters</strong>, holiday sales campaigns, and sending platform, tailored with your personal voice, your location's direct booking links, membership links, address, and team sign-off. Everything is taken off your plate so you can focus on running your spa.
+        We handle your holiday sales campaigns, personalized monthly newsletters, and email sending platform, tailored with your personal voice, your location's direct booking links, membership links, address, and team sign-off. Everything is taken off your plate so you can focus on running your spa.
       </p>
 
       <div class="hero-actions">
@@ -1143,7 +1143,7 @@
       </div>
 
       <div class="roi-strip">
-        <strong>The Simple Math:</strong> Just <strong>one</strong> extra float package, holiday promo sale, or new member per month pays for your entire monthly fee. Everything after that is pure profit for your spa.
+        <strong>The Simple Math:</strong> Just one new membership signup, one holiday promo sale, or two additional return float bookings per month pays the entire monthly fee. Everything after that is pure profit for your spa.
       </div>
     </div>
   </section>
@@ -1199,7 +1199,7 @@
             </li>
             <li>
               <span class="icon">&#10003;</span>
-              <span><strong>Near-Zero Time Investment:</strong> We write, design, and schedule everything. You just spend two minutes adding a quick personal sentence to our monthly prompt and give a thumbs-up.</span>
+              <span><strong>Near-Zero Time Investment:</strong> We send you a fully written email to proof with a fun, simple prompt for you to write a one or two sentence story about the topic in that specific email for that month. You reply, give a quick thumbs-up, and we handle the rest.</span>
             </li>
             <li>
               <span class="icon">&#10003;</span>
@@ -1270,23 +1270,23 @@
       <div class="how-it-works-box">
         <div class="how-it-works-title">
           <h3>Why Our Monthly Emails Get 25% to 35% Open Rates</h3>
-          <p>Customers ignore generic corporate blasts, but they love hearing from their local spa owner. Here is how we make every monthly email genuinely yours in just two minutes:</p>
+          <p>Customers ignore generic corporate blasts, but they love hearing from their local spa. Here is how we make every monthly email genuinely yours in just two minutes:</p>
         </div>
         <div class="steps-grid">
           <div class="step-item">
-            <span class="step-badge">Step 1 &bull; We Build It</span>
-            <h4>We Write &amp; Design the Email</h4>
-            <p>Each month, we write a warm, conversational topic, build the mobile layout, and configure all of your local booking and membership links.</p>
+            <span class="step-badge">Step 1 &bull; We Write &amp; Design</span>
+            <h4>We Build the Full Email First</h4>
+            <p>Each month, we write a compelling email, build the mobile layout, and configure all of your local booking, membership, and holiday promo links.</p>
           </div>
           <div class="step-item">
-            <span class="step-badge">Step 2 &bull; 2-Minute Prompt</span>
-            <h4>You Add One Personal Paragraph</h4>
-            <p>We send you a preview with a simple, fun prompt (like sharing your favorite fall tradition or Halloween candy). You reply with a quick sentence or two in your own words.</p>
+            <span class="step-badge">Step 2 &bull; 2-Minute Voice</span>
+            <h4>You Add a Quick 1-to-2 Sentence Story</h4>
+            <p>We send you a fully written email to proof with a fun, simple prompt for you to write a one or two sentence story about the topic in that specific email for that month.</p>
           </div>
           <div class="step-item">
-            <span class="step-badge">Step 3 &bull; We Send &amp; Resend</span>
+            <span class="step-badge">Step 3 &bull; We Deploy &amp; Follow Up</span>
             <h4>You Approve &amp; We Handle the Rest</h4>
-            <p>We drop your personal answer right into the email, send it to your list, and automatically send a follow-up 48 hours later to anyone who missed it.</p>
+            <p>We drop your personal voice directly into the opening, send the email to your list, and automatically follow up 48 hours later to anyone who missed it.</p>
           </div>
         </div>
       </div>
@@ -1310,8 +1310,8 @@
             <div class="stat-label">Average Open Rate</div>
           </div>
           <div class="stat-box">
-            <div class="stat-number">2 Mins</div>
-            <div class="stat-label">Your Monthly Time</div>
+            <div class="stat-number">True</div>
+            <div class="stat-label">Personalization for Your Location</div>
           </div>
         </div>
       </div>
@@ -1423,90 +1423,7 @@
       </div>
 
       <div class="enrollment-wrapper">
-        <form id="enrollmentForm" onsubmit="handleEnrollment(event)">
-          
-          <div class="form-row">
-            <div class="form-group">
-              <label for="ownerName">Owner / Spa Operator Name <span class="req">*</span></label>
-              <input type="text" id="ownerName" required placeholder="e.g. John Doe">
-            </div>
-            <div class="form-group">
-              <label for="contactEmail">Primary Email Address <span class="req">*</span></label>
-              <input type="email" id="contactEmail" required placeholder="owner@truerest.com">
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="phoneNumber">Direct Phone Number <span class="req">*</span></label>
-              <input type="tel" id="phoneNumber" required placeholder="(555) 123-4567">
-            </div>
-            <div class="form-group">
-              <label for="locationCount">Number of Locations Enrolling <span class="req">*</span></label>
-              <select id="locationCount" onchange="updatePriceCalculation()" required>
-                <option value="1" selected>1 Location</option>
-                <option value="2">2 Locations</option>
-                <option value="3">3 Locations</option>
-                <option value="4">4 Locations</option>
-                <option value="5">5+ Locations</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="spaLocations">Location Name(s) &amp; City, State <span class="req">*</span></label>
-            <input type="text" id="spaLocations" required placeholder="e.g. True REST Float Spa - Scottsdale, AZ">
-          </div>
-
-          <div class="form-group">
-            <label>Select Your Service Term <span class="req">*</span></label>
-            <div class="plan-radios">
-              <label class="plan-radio-label">
-                <input type="radio" name="servicePlan" value="annual" checked onchange="updatePriceCalculation()">
-                <span><strong>Annual Agreement:</strong> $150 / mo Single Location ($0 Setup Fee Waived with 12-Month Term)</span>
-              </label>
-              <label class="plan-radio-label">
-                <input type="radio" name="servicePlan" value="paid_in_full" onchange="updatePriceCalculation()">
-                <span><strong>Annual Paid-in-Full:</strong> $1,500 / yr Single Location (Save $300, 2 Months Free)</span>
-              </label>
-              <label class="plan-radio-label">
-                <input type="radio" name="servicePlan" value="month_to_month" onchange="updatePriceCalculation()">
-                <span><strong>Flexible Month-to-Month:</strong> $200 / mo Single Location + $300 Setup Fee</span>
-              </label>
-            </div>
-          </div>
-
-          <div class="cost-preview">
-            <div class="cost-preview-text" id="costSummaryText">
-              Monthly Investment (1 Location, Annual Agreement, $0 Setup Fee):
-            </div>
-            <div class="cost-preview-val" id="costSummaryValue">
-              $150 / mo
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="checkbox-label">
-              <input type="checkbox" id="termsCheck" required>
-              <span id="termsText">I agree to the Annual Agreement terms ($150/mo base rate). I understand the $300 setup fee is waived in exchange for an initial 12-month commitment, transitioning to month-to-month afterward with preferred pricing retained.</span>
-            </label>
-          </div>
-
-          <button type="submit" class="btn-submit">
-            Confirm Location Enrollment &rarr;
-          </button>
-        </form>
-
-        <div id="submissionSuccess" class="submission-success">
-          <h3>Step 1 Complete: Location Details Reserved</h3>
-          <p>
-            Thank you! Your location has been queued for Black Friday email onboarding. We will send your payment setup link and simple subscriber list export instructions to your email address shortly.
-          </p>
-          <div style="font-size: 13px; color: #15803d; font-weight: 600;">
-            Next Step: Export your active customer list (CSV) from your booking system so we can configure your account.
-          </div>
-        </div>
-
+        <script src="https://www.cognitoforms.com/f/seamless.js" data-key="3rNNDpWKv0-9jr11STSuYA" data-form="1"></script>
       </div>
     </div>
   </section>
@@ -1540,7 +1457,7 @@
         <div class="faq-item">
           <h4>How much time will this take me each month?</h4>
           <p>
-            About two minutes. We write the copy, build the email, test all the links, and send you a preview with a simple one-question prompt. You reply with a quick sentence or two to make it personal to you, give us a thumbs-up, and we handle the rest.
+            About two minutes. We send you a fully written email to proof with a fun, simple prompt for you to write a one or two sentence story about the topic in that specific email for that month. You reply, give a quick thumbs-up, and we handle the scheduling, list hygiene, and deployment.
           </p>
         </div>
 
@@ -1591,58 +1508,10 @@
 
   <script>
     function selectPlan(planVal) {
-      const radio = document.querySelector(`input[name="servicePlan"][value="${planVal}"]`);
-      if (radio) {
-        radio.checked = true;
-        updatePriceCalculation();
+      const enrollSection = document.getElementById('enroll');
+      if (enrollSection) {
+        enrollSection.scrollIntoView({ behavior: 'smooth' });
       }
-      document.getElementById('enroll').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    function updatePriceCalculation() {
-      const locations = parseInt(document.getElementById('locationCount').value, 10);
-      const selectedPlan = document.querySelector('input[name="servicePlan"]:checked').value;
-      const textElem = document.getElementById('costSummaryText');
-      const valElem = document.getElementById('costSummaryValue');
-      const termsElem = document.getElementById('termsText');
-
-      let summaryText = "";
-      let summaryVal = "";
-      let termsCopy = "";
-
-      if (selectedPlan === 'annual') {
-        const base = 150;
-        const addl = (locations - 1) * 100;
-        const total = base + addl;
-        summaryText = `Monthly Investment (${locations} Location${locations > 1 ? 's' : ''}, Annual Agreement, $0 Setup Fee):`;
-        summaryVal = `$${total} / mo`;
-        termsCopy = `I agree to the Annual Agreement terms ($${total}/mo). I understand the $300 setup fee is waived in exchange for an initial 12-month commitment, transitioning to month-to-month afterward with preferred pricing retained.`;
-      } else if (selectedPlan === 'paid_in_full') {
-        const base = 1500;
-        const addl = (locations - 1) * 1000;
-        const total = base + addl;
-        summaryText = `Annual Investment (${locations} Location${locations > 1 ? 's' : ''}, Paid-in-Full, $0 Setup Fee):`;
-        summaryVal = `$${total} / yr`;
-        termsCopy = `I agree to the Annual Paid-in-Full terms ($${total}/yr with $0 setup fee and 2 months free), transitioning to month-to-month after the initial 12-month term with preferred pricing retained.`;
-      } else if (selectedPlan === 'month_to_month') {
-        const base = 200;
-        const addl = (locations - 1) * 150;
-        const monthly = base + addl;
-        const setup = 300;
-        summaryText = `Initial Start Cost (${locations} Location${locations > 1 ? 's' : ''}: $${monthly}/mo + $${setup} Setup Fee):`;
-        summaryVal = `$${monthly + setup} to start`;
-        termsCopy = `I agree to the Flexible Month-to-Month terms ($${monthly}/mo plus the one-time $300 onboarding setup fee due at start). Cancel anytime with 30-day notice.`;
-      }
-
-      textElem.innerText = summaryText;
-      valElem.innerText = summaryVal;
-      termsElem.innerText = termsCopy;
-    }
-
-    function handleEnrollment(e) {
-      e.preventDefault();
-      document.getElementById('enrollmentForm').style.display = 'none';
-      document.getElementById('submissionSuccess').style.display = 'block';
     }
   </script>
 </body>
