@@ -1070,6 +1070,140 @@
         padding: 16px 20px;
       }
     }
+
+    /* Modal Pop-up */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(11, 28, 44, 0.75);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.25s ease, visibility 0.25s ease;
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .modal-dialog {
+      background-color: #ffffff;
+      border-radius: 16px;
+      max-width: 680px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+      position: relative;
+      animation: modalSlideUp 0.3s ease;
+    }
+
+    @keyframes modalSlideUp {
+      from {
+        transform: translateY(20px);
+        opacity: 0.8;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .modal-header {
+      padding: 20px 24px 16px 24px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #ffffff;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
+    }
+
+    .modal-header h3 {
+      font-size: 19px;
+      color: var(--primary-navy);
+      margin: 0;
+    }
+
+    .modal-close-btn {
+      background: none;
+      border: none;
+      font-size: 26px;
+      line-height: 1;
+      color: #94a3b8;
+      cursor: pointer;
+      transition: color 0.15s, background-color 0.15s;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+    }
+
+    .modal-close-btn:hover {
+      color: var(--text-dark);
+      background-color: #f1f5f9;
+    }
+
+    .modal-body {
+      padding: 20px 24px 28px 24px;
+    }
+
+    .modal-summary-bar {
+      background-color: var(--bg-light);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .modal-summary-details {
+      font-size: 13px;
+      color: var(--text-dark);
+      line-height: 1.45;
+    }
+
+    .modal-summary-details strong {
+      color: var(--primary-navy);
+    }
+
+    .modal-summary-amount {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--primary-blue);
+    }
+
+    .modal-security-note {
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border-color);
+    }
   </style>
 </head>
 <body>
@@ -1411,22 +1545,127 @@
     </div>
   </section>
 
-  <!-- Interactive Registration / Enrollment Form -->
+    <!-- Interactive Registration / Enrollment Form -->
   <section class="enrollment" id="enroll">
     <div class="container">
       <div class="section-title-area">
         <div class="section-tag">Fast Onboarding &bull; November 10th Cutoff</div>
         <h2 class="section-title">Enroll Your Location Today</h2>
         <p class="section-subtitle">
-          Enroll by <strong>November 10th</strong> to guarantee your location is fully built, tested, and ready to launch before Black Friday promos begin.
+          Select your plan and complete your location information below to confirm your spot before Black Friday campaigns launch.
         </p>
       </div>
 
       <div class="enrollment-wrapper">
-        <script src="https://www.cognitoforms.com/f/seamless.js" data-key="3rNNDpWKv0-9jr11STSuYA" data-form="1"></script>
+        <form id="enrollmentForm" onsubmit="handleEnrollment(event)">
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="ownerName">Owner / Spa Operator Name <span class="req">*</span></label>
+              <input type="text" id="ownerName" required placeholder="e.g. John Doe">
+            </div>
+            <div class="form-group">
+              <label for="contactEmail">Primary Email Address <span class="req">*</span></label>
+              <input type="email" id="contactEmail" required placeholder="owner@truerest.com">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phoneNumber">Direct Phone Number <span class="req">*</span></label>
+              <input type="tel" id="phoneNumber" required placeholder="(555) 123-4567">
+            </div>
+            <div class="form-group">
+              <label for="locationCount">Number of Locations Enrolling <span class="req">*</span></label>
+              <select id="locationCount" onchange="updatePriceCalculation()" required>
+                <option value="1" selected>1 Location</option>
+                <option value="2">2 Locations</option>
+                <option value="3">3 Locations</option>
+                <option value="4">4 Locations</option>
+                <option value="5">5+ Locations</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="spaLocations">Location Name(s) &amp; City, State <span class="req">*</span></label>
+            <input type="text" id="spaLocations" required placeholder="e.g. True REST Float Spa - Scottsdale, AZ">
+          </div>
+
+          <div class="form-group">
+            <label>Select Your Service Term <span class="req">*</span></label>
+            <div class="plan-radios">
+              <label class="plan-radio-label">
+                <input type="radio" name="servicePlan" value="annual" checked onchange="updatePriceCalculation()">
+                <span><strong>Annual Agreement:</strong> $150 / mo Single Location ($0 Setup Fee Waived with 12-Month Term)</span>
+              </label>
+              <label class="plan-radio-label">
+                <input type="radio" name="servicePlan" value="paid_in_full" onchange="updatePriceCalculation()">
+                <span><strong>Annual Paid-in-Full:</strong> $1,500 / yr Single Location (Save $300, 2 Months Free)</span>
+              </label>
+              <label class="plan-radio-label">
+                <input type="radio" name="servicePlan" value="month_to_month" onchange="updatePriceCalculation()">
+                <span><strong>Flexible Month-to-Month:</strong> $200 / mo Single Location + $300 Setup Fee</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="cost-preview">
+            <div class="cost-preview-text" id="costSummaryText">
+              Monthly Investment (1 Location, Annual Agreement, $0 Setup Fee):
+            </div>
+            <div class="cost-preview-val" id="costSummaryValue">
+              $150 / mo
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="termsCheck" required>
+              <span id="termsText">I agree to the Annual Agreement terms ($150/mo base rate). I understand the $300 setup fee is waived in exchange for an initial 12-month commitment, transitioning to month-to-month afterward with preferred pricing retained.</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn-submit">
+            Confirm Location Details &amp; Proceed to Payment &rarr;
+          </button>
+        </form>
+
       </div>
     </div>
   </section>
+
+  <!-- Payment Modal Popup with Embedded Cognito Form -->
+  <div id="paymentModal" class="modal-overlay" onclick="handleOverlayClick(event)">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3>Confirm Enrollment &amp; Payment</h3>
+        <button type="button" class="modal-close-btn" onclick="closePaymentModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        
+        <div class="modal-summary-bar">
+          <div class="modal-summary-details" id="modalSummaryDetails">
+            <strong>Selected Plan:</strong> Annual Agreement &bull; 1 Location<br>
+            <strong>Enrolling:</strong> True REST Float Spa
+          </div>
+          <div class="modal-summary-amount" id="modalSummaryAmount">
+            $150 / mo
+          </div>
+        </div>
+
+        <!-- Embedded Cognito Form for Payment & Confirmation -->
+        <div class="cognito-container">
+          <script src="https://www.cognitoforms.com/f/seamless.js" data-key="3rNNDpWKv0-9jr11STSuYA" data-form="1"></script>
+        </div>
+
+        <div class="modal-security-note">
+          Encrypted 256-Bit SSL Connection &bull; Your location onboarding begins immediately upon confirmation.
+        </div>
+
+      </div>
+    </div>
+  </div>
 
   <!-- FAQ Section -->
   <section class="faq" id="faq">
@@ -1506,13 +1745,120 @@
     </div>
   </footer>
 
-  <script>
+    <script>
     function selectPlan(planVal) {
+      const radio = document.querySelector(`input[name="servicePlan"][value="${planVal}"]`);
+      if (radio) {
+        radio.checked = true;
+        updatePriceCalculation();
+      }
       const enrollSection = document.getElementById('enroll');
       if (enrollSection) {
         enrollSection.scrollIntoView({ behavior: 'smooth' });
       }
     }
+
+    function updatePriceCalculation() {
+      const locations = parseInt(document.getElementById('locationCount').value, 10);
+      const selectedPlan = document.querySelector('input[name="servicePlan"]:checked').value;
+      const textElem = document.getElementById('costSummaryText');
+      const valElem = document.getElementById('costSummaryValue');
+      const termsElem = document.getElementById('termsText');
+
+      let summaryText = "";
+      let summaryVal = "";
+      let termsCopy = "";
+
+      if (selectedPlan === 'annual') {
+        const base = 150;
+        const addl = (locations - 1) * 100;
+        const total = base + addl;
+        summaryText = `Monthly Investment (${locations} Location${locations > 1 ? 's' : ''}, Annual Agreement, $0 Setup Fee):`;
+        summaryVal = `$${total} / mo`;
+        termsCopy = `I agree to the Annual Agreement terms ($${total}/mo). I understand the $300 setup fee is waived in exchange for an initial 12-month commitment, transitioning to month-to-month afterward with preferred pricing retained.`;
+      } else if (selectedPlan === 'paid_in_full') {
+        const base = 1500;
+        const addl = (locations - 1) * 1000;
+        const total = base + addl;
+        summaryText = `Annual Investment (${locations} Location${locations > 1 ? 's' : ''}, Paid-in-Full, $0 Setup Fee):`;
+        summaryVal = `$${total} / yr`;
+        termsCopy = `I agree to the Annual Paid-in-Full terms ($${total}/yr with $0 setup fee and 2 months free), transitioning to month-to-month after the initial 12-month term with preferred pricing retained.`;
+      } else if (selectedPlan === 'month_to_month') {
+        const base = 200;
+        const addl = (locations - 1) * 150;
+        const monthly = base + addl;
+        const setup = 300;
+        summaryText = `Initial Start Cost (${locations} Location${locations > 1 ? 's' : ''}: $${monthly}/mo + $${setup} Setup Fee):`;
+        summaryVal = `$${monthly + setup} to start`;
+        termsCopy = `I agree to the Flexible Month-to-Month terms ($${monthly}/mo plus the one-time $300 onboarding setup fee due at start). Cancel anytime with 30-day notice.`;
+      }
+
+      textElem.innerText = summaryText;
+      valElem.innerText = summaryVal;
+      termsElem.innerText = termsCopy;
+    }
+
+    function handleEnrollment(e) {
+      e.preventDefault();
+      
+      const locations = parseInt(document.getElementById('locationCount').value, 10);
+      const selectedPlan = document.querySelector('input[name="servicePlan"]:checked').value;
+      const ownerName = document.getElementById('ownerName').value;
+      const spaLocations = document.getElementById('spaLocations').value;
+      
+      let planTitle = "Annual Agreement";
+      let amountStr = "$150 / mo";
+      if (selectedPlan === 'annual') {
+        planTitle = "Annual Agreement";
+        const total = 150 + (locations - 1) * 100;
+        amountStr = `$${total} / mo`;
+      } else if (selectedPlan === 'paid_in_full') {
+        planTitle = "Annual Paid-in-Full";
+        const total = 1500 + (locations - 1) * 1000;
+        amountStr = `$${total} / yr`;
+      } else if (selectedPlan === 'month_to_month') {
+        planTitle = "Flexible Month-to-Month";
+        const total = 200 + (locations - 1) * 150;
+        amountStr = `$${total + 300} to start ($${total}/mo)`;
+      }
+
+      const summaryDetailsElem = document.getElementById('modalSummaryDetails');
+      const summaryAmountElem = document.getElementById('modalSummaryAmount');
+      if (summaryDetailsElem && summaryAmountElem) {
+        summaryDetailsElem.innerHTML = `<strong>Plan:</strong> ${planTitle} &bull; ${locations} Location${locations > 1 ? 's' : ''}<br><strong>Enrolling:</strong> ${spaLocations} (${ownerName})`;
+        summaryAmountElem.innerText = amountStr;
+      }
+
+      openPaymentModal();
+    }
+
+    function openPaymentModal() {
+      const modal = document.getElementById('paymentModal');
+      if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closePaymentModal() {
+      const modal = document.getElementById('paymentModal');
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function handleOverlayClick(e) {
+      if (e.target && e.target.id === 'paymentModal') {
+        closePaymentModal();
+      }
+    }
+
+    window.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closePaymentModal();
+      }
+    });
   </script>
 </body>
 </html>
