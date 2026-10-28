@@ -1892,7 +1892,10 @@
           locationCount: locations,
           locations: locationsFormatted,
           servicePlan: planTitle,
-          totalAmount: amountStr
+          totalAmount: amountStr,
+          totalRate: amountStr,
+          rate: amountStr,
+          amount: amountStr
         };
         fetch(INTAKE_WEBHOOK_URL, {
           method: 'POST',
