@@ -1836,12 +1836,17 @@
       termsElem.innerText = termsCopy;
     }
 
+    // Webhook endpoint to log Step 1 intake directly into Google Sheets and trigger email
+    const INTAKE_WEBHOOK_URL = ""; 
+
     function handleEnrollment(e) {
       e.preventDefault();
       
       const locations = parseInt(document.getElementById('locationCount').value, 10);
       const selectedPlan = document.querySelector('input[name="servicePlan"]:checked').value;
       const ownerName = document.getElementById('ownerName').value;
+      const contactEmail = document.getElementById('contactEmail').value;
+      const phoneNumber = document.getElementById('phoneNumber').value;
       
       const locInputs = document.querySelectorAll('#locationFieldsContainer input');
       const locList = [];
@@ -1868,11 +1873,33 @@
         amountStr = `$${total + 300} to start ($${total}/mo)`;
       }
 
+      // Update pop-up modal summary
       const summaryDetailsElem = document.getElementById('modalSummaryDetails');
       const summaryAmountElem = document.getElementById('modalSummaryAmount');
       if (summaryDetailsElem && summaryAmountElem) {
         summaryDetailsElem.innerHTML = `<strong>Plan:</strong> ${planTitle} &bull; ${locations} Location${locations > 1 ? 's' : ''}<br><strong>Enrolling:</strong> ${locationsFormatted} (${ownerName})`;
         summaryAmountElem.innerText = amountStr;
+      }
+
+      // Automatically dispatch intake payload to Google Sheets & Email in background
+      if (INTAKE_WEBHOOK_URL && INTAKE_WEBHOOK_URL.trim() !== "") {
+        const payload = {
+          ownerName: ownerName,
+          contactEmail: contactEmail,
+          phoneNumber: phoneNumber,
+          locationCount: locations,
+          locations: locationsFormatted,
+          servicePlan: planTitle,
+          totalAmount: amountStr
+        };
+        fetch(INTAKE_WEBHOOK_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        }).catch(function(err) {
+          console.log('Intake submission logged:', err);
+        });
       }
 
       openPaymentModal();
