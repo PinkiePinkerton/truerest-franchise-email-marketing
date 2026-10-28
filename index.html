@@ -1587,9 +1587,11 @@
             </div>
           </div>
 
-          <div class="form-group">
-            <label for="spaLocations">Location Name(s) &amp; City, State <span class="req">*</span></label>
-            <input type="text" id="spaLocations" required placeholder="e.g. True REST Float Spa - Scottsdale, AZ">
+          <div id="locationFieldsContainer">
+            <div class="form-group">
+              <label for="loc_1">Location City and State <span class="req">*</span></label>
+              <input type="text" id="loc_1" name="spaLocation" required placeholder="e.g. Chico, CA">
+            </div>
           </div>
 
           <div class="form-group">
@@ -1746,6 +1748,40 @@
   </footer>
 
     <script>
+    function renderLocationFields() {
+      const container = document.getElementById('locationFieldsContainer');
+      if (!container) return;
+      const count = parseInt(document.getElementById('locationCount').value, 10);
+      
+      const existingInputs = container.querySelectorAll('input');
+      const existingValues = [];
+      existingInputs.forEach(input => existingValues.push(input.value));
+      
+      let html = '';
+      if (count === 1) {
+        const val = existingValues[0] || '';
+        html = `
+          <div class="form-group">
+            <label for="loc_1">Location City and State <span class="req">*</span></label>
+            <input type="text" id="loc_1" name="spaLocation" required placeholder="e.g. Chico, CA" value="${val}">
+          </div>
+        `;
+      } else {
+        const samplePlaces = ['Chico, CA', 'Brick, NJ', 'Ocean Township, NJ', 'Scottsdale, AZ', 'Omaha, NE'];
+        for (let i = 1; i <= count; i++) {
+          const val = existingValues[i - 1] || '';
+          const placeholder = `e.g. ${samplePlaces[(i - 1) % samplePlaces.length]}`;
+          html += `
+            <div class="form-group">
+              <label for="loc_${i}">Location ${i} City and State <span class="req">*</span></label>
+              <input type="text" id="loc_${i}" name="spaLocation" required placeholder="${placeholder}" value="${val}">
+            </div>
+          `;
+        }
+      }
+      container.innerHTML = html;
+    }
+
     function selectPlan(planVal) {
       const radio = document.querySelector(`input[name="servicePlan"][value="${planVal}"]`);
       if (radio) {
@@ -1764,6 +1800,8 @@
       const textElem = document.getElementById('costSummaryText');
       const valElem = document.getElementById('costSummaryValue');
       const termsElem = document.getElementById('termsText');
+
+      renderLocationFields();
 
       let summaryText = "";
       let summaryVal = "";
@@ -1804,7 +1842,15 @@
       const locations = parseInt(document.getElementById('locationCount').value, 10);
       const selectedPlan = document.querySelector('input[name="servicePlan"]:checked').value;
       const ownerName = document.getElementById('ownerName').value;
-      const spaLocations = document.getElementById('spaLocations').value;
+      
+      const locInputs = document.querySelectorAll('#locationFieldsContainer input');
+      const locList = [];
+      locInputs.forEach(inp => {
+        if (inp.value.trim()) {
+          locList.push(inp.value.trim());
+        }
+      });
+      const locationsFormatted = locList.map(loc => `True REST ${loc}`).join(', ');
       
       let planTitle = "Annual Agreement";
       let amountStr = "$150 / mo";
@@ -1825,7 +1871,7 @@
       const summaryDetailsElem = document.getElementById('modalSummaryDetails');
       const summaryAmountElem = document.getElementById('modalSummaryAmount');
       if (summaryDetailsElem && summaryAmountElem) {
-        summaryDetailsElem.innerHTML = `<strong>Plan:</strong> ${planTitle} &bull; ${locations} Location${locations > 1 ? 's' : ''}<br><strong>Enrolling:</strong> ${spaLocations} (${ownerName})`;
+        summaryDetailsElem.innerHTML = `<strong>Plan:</strong> ${planTitle} &bull; ${locations} Location${locations > 1 ? 's' : ''}<br><strong>Enrolling:</strong> ${locationsFormatted} (${ownerName})`;
         summaryAmountElem.innerText = amountStr;
       }
 
@@ -1858,6 +1904,10 @@
       if (e.key === 'Escape') {
         closePaymentModal();
       }
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      renderLocationFields();
     });
   </script>
 </body>
