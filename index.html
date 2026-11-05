@@ -95,53 +95,76 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
     }
 
     .header-inner {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      height: 75px;
+      height: 72px;
     }
 
     .logo-area {
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 12px;
+      flex-shrink: 0;
     }
 
-    .logo-area img {
-      height: 48px;
-      width: auto;
-      display: block;
+    .logo-brand-lockup {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
     }
 
-    .logo-divider {
-      height: 28px;
-      width: 1px;
-      background-color: var(--border-color);
-    }
-
-    .portal-tag {
+    .tsmc-badge {
+      background: linear-gradient(135deg, var(--vibrant-cyan) 0%, var(--primary-blue) 100%);
+      color: #ffffff;
       font-family: 'Montserrat', sans-serif;
       font-size: 13px;
-      font-weight: 700;
+      font-weight: 900;
+      padding: 4px 8px;
+      border-radius: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .tsmc-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      font-weight: 800;
       color: var(--primary-navy);
+      letter-spacing: -0.3px;
+      white-space: nowrap;
+    }
+
+    .portal-tag-pill {
+      background: rgba(0, 132, 200, 0.08);
+      color: var(--primary-blue);
+      border: 1px solid rgba(0, 132, 200, 0.18);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 20px;
+      letter-spacing: 0.4px;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      white-space: nowrap;
     }
 
     nav.header-nav {
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 20px;
+      white-space: nowrap;
     }
 
     nav.header-nav a {
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 600;
       color: var(--text-dark);
+      text-decoration: none;
       transition: color 0.2s;
     }
 
@@ -155,15 +178,20 @@
       font-family: 'Montserrat', sans-serif;
       font-size: 13px;
       font-weight: 700;
-      padding: 10px 22px;
+      padding: 9px 18px;
       border-radius: 50px;
-      box-shadow: 0 3px 10px rgba(0, 132, 200, 0.25);
+      box-shadow: 0 3px 10px rgba(0, 132, 200, 0.22);
       transition: transform 0.2s, box-shadow 0.2s;
+      margin-left: 6px;
     }
 
     .nav-cta-btn:hover {
       transform: translateY(-1px);
-      box-shadow: 0 5px 15px rgba(0, 132, 200, 0.35);
+      box-shadow: 0 5px 15px rgba(0, 132, 200, 0.32);
+    }
+
+    .mobile-header-cta {
+      display: none;
     }
 
     /* Hero Section */
@@ -1050,22 +1078,217 @@
       line-height: 1.6;
     }
 
+    /* About TSMC Section */
+    section.about-tsmc {
+      padding: 70px 0;
+      background-color: #ffffff;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .about-tsmc-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 45px;
+      align-items: center;
+      margin-top: 35px;
+    }
+    .about-tsmc-story h3 {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary-navy);
+      margin-bottom: 16px;
+    }
+    .about-tsmc-story p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text-body);
+      margin-bottom: 16px;
+    }
+    .about-founder-signature {
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .about-founder-signature strong {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      color: var(--primary-navy);
+      font-weight: 800;
+    }
+    .about-founder-signature span {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .about-tsmc-pillars {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .about-pillar-card {
+      background-color: var(--bg-light);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 20px 22px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .about-pillar-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+    }
+    .about-pillar-icon {
+      font-size: 22px;
+      line-height: 1;
+      background: #ffffff;
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border: 1px solid var(--border-color);
+      color: var(--primary-blue);
+    }
+    .about-pillar-content h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--primary-navy);
+      margin-bottom: 6px;
+    }
+    .about-pillar-content p {
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--text-body);
+      margin: 0;
+    }
+
     /* Responsive adjustments */
+    /* Bottom CTA Section */
+    section.bottom-cta {
+      padding: 50px 0;
+      background: linear-gradient(135deg, var(--primary-navy) 0%, #062338 100%);
+      color: #ffffff;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .bottom-cta-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+    }
+    .bottom-cta-content {
+      max-width: 620px;
+    }
+    .bottom-cta-tag {
+      display: inline-block;
+      background: rgba(0, 132, 200, 0.25);
+      color: var(--vibrant-cyan);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+      border: 1px solid rgba(0, 132, 200, 0.35);
+    }
+    .bottom-cta-content h3 {
+      font-size: 26px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 10px;
+      line-height: 1.25;
+    }
+    .bottom-cta-content p {
+      font-size: 14.5px;
+      color: #cbd5e1;
+      line-height: 1.6;
+      margin: 0;
+    }
+    .bottom-cta-action {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .bottom-cta-sub {
+      font-size: 11px;
+      color: #94a3b8;
+      text-align: center;
+    }
+
+    /* Tablet & Medium Screen Header Fit (901px to 1150px) */
+    @media (max-width: 1150px) and (min-width: 901px) {
+      nav.header-nav {
+        gap: 14px;
+      }
+      nav.header-nav a {
+        font-size: 12.5px;
+      }
+      .portal-tag-pill {
+        display: none;
+      }
+      .nav-cta-btn {
+        padding: 8px 14px;
+        font-size: 12px;
+        margin-left: 2px;
+      }
+    }
+
     @media (max-width: 900px) {
-      .pillars-grid, .pricing-grid, .comparison-grid, .faq-grid, .steps-grid {
+      .bottom-cta-box {
+        flex-direction: column;
+        text-align: center;
+      }
+      .bottom-cta-content {
+        max-width: 100%;
+      }
+      .bottom-cta-action {
+        width: 100%;
+      }
+      .bottom-cta-action .btn-primary {
+        width: 100%;
+      }
+      .pillars-grid, .pricing-grid, .comparison-grid, .faq-grid, .steps-grid, .about-tsmc-grid {
         grid-template-columns: 1fr;
       }
       .proof-banner {
         grid-template-columns: 1fr;
       }
       .hero h1 {
-        font-size: 30px;
+        font-size: 28px;
       }
       .form-row {
         grid-template-columns: 1fr;
       }
       header.site-header nav.header-nav {
         display: none;
+      }
+      .portal-tag-pill {
+        display: none;
+      }
+      .mobile-header-cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, var(--vibrant-cyan) 0%, var(--primary-blue) 100%);
+        color: #ffffff !important;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 7px 15px;
+        border-radius: 20px;
+        text-decoration: none;
+        box-shadow: 0 2px 8px rgba(0, 132, 200, 0.2);
+        white-space: nowrap;
       }
       .hero-bullet-lines {
         padding: 16px 20px;
@@ -1084,23 +1307,24 @@
 
       /* Header & Branding */
       header.site-header {
-        padding: 10px 0;
+        padding: 8px 0;
       }
       .header-inner {
-        height: auto;
+        height: 54px;
       }
       .logo-area {
-        gap: 10px;
+        gap: 8px;
       }
-      .logo-area img {
-        height: 36px;
+      .tsmc-name {
+        font-size: 15px;
       }
-      .logo-divider {
-        height: 22px;
+      .portal-tag-pill {
+        display: none;
       }
-      .portal-tag {
-        font-size: 11px;
-        letter-spacing: 0.5px;
+
+      /* iOS Form Zoom Prevention */
+      input[type="text"], input[type="email"], input[type="tel"], select, textarea {
+        font-size: 16px !important;
       }
 
       /* Announcement Bar */
@@ -1191,10 +1415,34 @@
       section.comparison, 
       section.pillars, 
       section.proof, 
+      section.about-tsmc,
+      section.bottom-cta, 
       section.pricing, 
       section.enrollment, 
       section.faq {
         padding: 42px 0;
+      }
+      .about-tsmc-story h3 {
+        font-size: 20px;
+      }
+      .about-tsmc-story p {
+        font-size: 13.5px;
+        line-height: 1.6;
+      }
+      .about-pillar-card {
+        padding: 16px 14px;
+        gap: 12px;
+      }
+      .about-pillar-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 18px;
+      }
+      .about-pillar-content h4 {
+        font-size: 14px;
+      }
+      .about-pillar-content p {
+        font-size: 12.5px;
       }
       .section-title-area {
         margin-bottom: 24px;
@@ -1530,7 +1778,7 @@
 
   <!-- Top Notice Bar -->
   <div class="announcement-bar">
-    <span class="pill">Independent Service</span> Turnkey Float Spa Email Marketing &bull; Powered by The Smart Marketing Co. &bull; <strong>Black Friday Enrollment Cutoff: November 10th</strong>
+    <span class="pill">Independent Service</span> Turnkey Float Spa Email Marketing &bull; Powered by The Smart Marketing Co. &bull; <strong id="dlHero">Sign Up by November 14th: Setup Fee Waived</strong>
   </div>
 
   <!-- Header -->
@@ -1538,20 +1786,20 @@
     <div class="container">
       <div class="header-inner">
         <div class="logo-area">
-          <div style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:18px;color:#0b3c5d;letter-spacing:-0.5px;display:flex;align-items:center;gap:6px;">
-            <span style="background:#0084c8;color:#fff;padding:4px 8px;border-radius:6px;font-size:14px;font-weight:900;">TSMC</span>
-            <span>The Smart Marketing Co.</span>
-          </div>
-          <div class="logo-divider"></div>
-          <span class="portal-tag">Float Spa Email Program</span>
+          <a href="#" class="logo-brand-lockup">
+            <span class="tsmc-badge">TSMC</span>
+            <span class="tsmc-name">The Smart Marketing Co.</span>
+          </a>
+          <span class="portal-tag-pill">Float Spa Program</span>
         </div>
         <nav class="header-nav">
-          <a href="#what-is-included">What Is Included</a>
-          <a href="#performance">Performance</a>
-          <a href="#pricing">Program Terms</a>
+          <a href="#what-is-included">What's Included</a>
+          <a href="#pricing">Pricing</a>
           <a href="#faq">FAQ</a>
+          <a href="#about-tsmc">About &amp; Results</a>
           <a href="#enroll" class="nav-cta-btn">Enroll Location</a>
         </nav>
+        <a href="#enroll" class="mobile-header-cta">Enroll</a>
       </div>
     </div>
   </header>
@@ -1605,69 +1853,6 @@
     </div>
   </section>
 
-  <!-- Comparison Section -->
-  <section class="comparison">
-    <div class="container">
-      <div class="section-title-area">
-        <div class="section-tag">Why This Program Exists</div>
-        <h2 class="section-title">The Real Cost of Going It Alone</h2>
-        <p class="section-subtitle">
-          Many float spa owners pay $100 to $250+ per month just for standalone email software, while still spending hours each week designing, writing, and troubleshooting campaigns from scratch.
-        </p>
-      </div>
-
-      <div class="comparison-grid">
-        <!-- DIY Software -->
-        <div class="comp-card diy">
-          <div class="comp-badge">The DIY Software Route</div>
-          <h3>Costly Software + Your Time</h3>
-          <ul class="comp-list">
-            <li>
-              <span class="icon">&times;</span>
-              <span><strong>Expensive Software Fees:</strong> Third-party platforms like Mailchimp, MailerLite, and Constant Contact charge $100 to $250 per month just to store your contacts and hit send.</span>
-            </li>
-            <li>
-              <span class="icon">&times;</span>
-              <span><strong>You Have to Write Everything:</strong> You are forced to spend hours or pay someone to brainstorm topics, write copy, and build responsive emails each month.</span>
-            </li>
-            <li>
-              <span class="icon">&times;</span>
-              <span><strong>Marketing Gets Pushed Aside:</strong> When you get busy running your spa, emails just don't get sent, leaving holiday promo sales, repeat float bookings, and new membership sign-ups on the table.</span>
-            </li>
-            <li>
-              <span class="icon">&times;</span>
-              <span><strong>Clunky Tech &amp; Formatting:</strong> Spending late nights wrestling with email builders, broken buttons, and mobile formatting instead of running your spa.</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- All-In-One Solution -->
-        <div class="comp-card turnkey">
-          <div class="comp-badge">All-In-One Personalized Solution</div>
-          <h3>Software + Full Service Included</h3>
-          <ul class="comp-list">
-            <li>
-              <span class="icon">&#10003;</span>
-              <span><strong>One Flat Rate Covers All:</strong> Both the sending software and full campaign management are included for $150/month. No extra software bills.</span>
-            </li>
-            <li>
-              <span class="icon">&#10003;</span>
-              <span><strong>Custom &amp; Personalized to Your Voice:</strong> Every monthly email features a personal touch from your spa, plus your direct float booking link, membership sign-up link, phone number, directions, and your team's signature.</span>
-            </li>
-            <li>
-              <span class="icon">&#10003;</span>
-              <span><strong>Near-Zero Time Investment:</strong> We send you a fully written email to proof with a simple engagement prompt for you to write a one or two sentence story about a topic in that specific email for that month. You reply, give a quick thumbs-up, and we handle the rest.</span>
-            </li>
-            <li>
-              <span class="icon">&#10003;</span>
-              <span><strong>High-Engagement Results:</strong> Engaging, personal emails averaging 25% to 35% open rates across active float therapy centers, driving return floaters and new members.</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Core Pillars Section -->
   <section class="pillars" id="what-is-included">
     <div class="container">
@@ -1697,9 +1882,9 @@
         <!-- Pillar 2 -->
         <div class="pillar-card">
           <div class="pillar-number">Pillar 02</div>
-          <h3>Monthly Newsletters (Book More Return Floaters)</h3>
+          <h3>Monthly Newsletters (Membership Upsells &amp; Return Floats)</h3>
           <p>
-            Engaging, conversational emails sent once a month with a personal note from you that keeps your location top-of-mind, brings past guests back into your pods, and grows memberships.
+            Engaging, conversational emails sent once a month with a personal note from you that turns one-time floaters into recurring monthly members and brings past guests back into your pods.
           </p>
           <ul>
             <li>Warm, personal 1-on-1 tone in your location's voice</li>
@@ -1751,29 +1936,7 @@
     </div>
   </section>
 
-  <!-- Track Record / Proof -->
-  <section class="proof" id="performance">
-    <div class="container">
-      <div class="proof-banner">
-        <div>
-          <h3>Battle-Tested Across Active Float Therapy Centers</h3>
-          <p>
-            This exact system is already running live across multi-location float therapy spas. The program delivers proven 25% to 35% average open rates, turns one-time floaters into recurring monthly members, and captures thousands in holiday gift card and promotional sales with near-zero owner effort.
-          </p>
-        </div>
-        <div class="proof-stats">
-          <div class="stat-box">
-            <div class="stat-number">25% - 35%</div>
-            <div class="stat-label">Average Open Rate</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-number">True</div>
-            <div class="stat-label">Personalization for Your Location</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+
 
   <!-- Pricing Section -->
   <section class="pricing" id="pricing">
@@ -1793,7 +1956,7 @@
             <div class="pricing-plan-title">Annual Agreement</div>
             <div class="pricing-price">$150 <span>/ month</span></div>
             <div class="pricing-location-sub">Single Location</div>
-            <div class="pricing-setup-line">$0 Setup Fee (Waived)</div>
+            <div class="pricing-setup-line" id="dlAnnualSetup">$0 Setup Fee (Waived if you sign up by Nov 14)</div>
           </div>
           <div class="pricing-body">
             <ul class="pricing-features">
@@ -1826,7 +1989,7 @@
               <li><span class="check">&#10003;</span> <span><strong>Full Holiday Sales Campaigns:</strong> Black Friday, BOGO, Valentine's, Mother's Day, Father's Day</span></li>
               <li><span class="check">&#10003;</span> <span><strong>Complete Local Customization:</strong> Direct booking links, membership links, phone, directions &amp; signature</span></li>
               <li><span class="check">&#10003;</span> <span><strong>Additional Locations:</strong> +$1,000 / year per location</span></li>
-              <li><span class="check">&#10003;</span> <span><strong>Setup Fee:</strong> $0 (Waived)</span></li>
+              <li><span class="check">&#10003;</span> <span><strong>Setup Fee:</strong> <span id="dlPaidFeature">$0 if you sign up by Nov 14 ($200 after)</span></span></li>
               <li><span class="check">&#10003;</span> <span><strong>One Annual Payment:</strong> Clean accounting with zero monthly invoices</span></li>
             </ul>
           </div>
@@ -1841,7 +2004,7 @@
             <div class="pricing-plan-title">Flexible Month-to-Month</div>
             <div class="pricing-price">$200 <span>/ month</span></div>
             <div class="pricing-location-sub">Single Location</div>
-            <div class="pricing-setup-line">+$300 Setup Fee Upfront</div>
+            <div class="pricing-setup-line" id="dlM2mSetup">+$200 Setup Fee (Rises to $400 after Nov 14)</div>
           </div>
           <div class="pricing-body">
             <ul class="pricing-features">
@@ -1850,7 +2013,7 @@
               <li><span class="check">&#10003;</span> <span><strong>Holiday Sales Campaigns:</strong> Included</span></li>
               <li><span class="check">&#10003;</span> <span><strong>Complete Local Customization:</strong> Direct booking links, membership links, phone, directions &amp; signature</span></li>
               <li><span class="check">&#10003;</span> <span><strong>Additional Locations:</strong> +$150 / month per location</span></li>
-              <li><span class="check">&#10003;</span> <span><strong>Onboarding Setup Fee:</strong> $300 due at start</span></li>
+              <li><span class="check">&#10003;</span> <span><strong>Onboarding Setup Fee:</strong> <span id="dlM2mFeature">$200 if you sign up by Nov 14 ($400 after)</span></span></li>
               <li><span class="check">&#10003;</span> <span><strong>Freedom to Cancel:</strong> Month-to-month with 30-day notice</span></li>
             </ul>
           </div>
@@ -1863,7 +2026,7 @@
       <!-- Pricing Commitment Transparency Box -->
       <div class="pricing-note-box">
         <strong>Transparent Terms on the 12-Month Commitment:</strong>
-        Setting up your dedicated sending platform, domain verification, and custom location templates takes real upfront work. The 12-month agreement allows us to completely waive the $300 setup fee and spread that onboarding cost evenly over the year. Following your initial 12-month commitment, service automatically transitions to month-to-month afterward with preferred pricing retained.
+        Setting up your dedicated sending platform, domain verification, and custom location templates takes real upfront work. <span id="dlNote">Sign up by November 14th and the 12-month and paid-in-full options have no setup fee at all, with the onboarding cost spread evenly over the year. Month-to-month setup is $200 through November 14th. After that, setup is $200 on the 12-month and paid-in-full options and $400 on month-to-month, which covers the rush work of building and launching your location on a compressed holiday timeline. Following your initial 12-month commitment, service automatically transitions to month-to-month afterward with preferred pricing retained.</span>
       </div>
 
       <!-- 100% List Ownership & Clean Offboarding Guarantee -->
@@ -1878,7 +2041,7 @@
   <section class="enrollment" id="enroll">
     <div class="container">
       <div class="section-title-area">
-        <div class="section-tag">Fast Onboarding &bull; November 10th Cutoff</div>
+        <div class="section-tag" id="dlEnrollTag">Fast Onboarding &bull; Sign Up by November 14th</div>
         <h2 class="section-title">Enroll Your Location Today</h2>
         <p class="section-subtitle">
           Select your plan and complete your location information below to confirm your spot before Black Friday campaigns launch.
@@ -1928,15 +2091,15 @@
             <div class="plan-radios">
               <label class="plan-radio-label">
                 <input type="radio" name="servicePlan" value="annual" checked onchange="updatePriceCalculation()">
-                <span><strong>Annual Agreement:</strong> $150 / mo Single Location ($0 Setup Fee Waived with 12-Month Term)</span>
+                <span id="dlRadioAnnual"><strong>Annual Agreement:</strong> $150 / mo Single Location ($0 Setup Fee Waived if you sign up by Nov 14)</span>
               </label>
               <label class="plan-radio-label">
                 <input type="radio" name="servicePlan" value="paid_in_full" onchange="updatePriceCalculation()">
-                <span><strong>Annual Paid-in-Full:</strong> $1,500 / yr Single Location (Save $300, 2 Months Free)</span>
+                <span id="dlRadioPaid"><strong>Annual Paid-in-Full:</strong> $1,500 / yr Single Location (Save $300, 2 Months Free, $0 Setup Fee if you sign up by Nov 14)</span>
               </label>
               <label class="plan-radio-label">
                 <input type="radio" name="servicePlan" value="month_to_month" onchange="updatePriceCalculation()">
-                <span><strong>Flexible Month-to-Month:</strong> $200 / mo Single Location + $300 Setup Fee</span>
+                <span id="dlRadioM2m"><strong>Flexible Month-to-Month:</strong> $200 / mo Single Location + $200 Setup Fee (rises to $400 after Nov 14)</span>
               </label>
             </div>
           </div>
@@ -1953,7 +2116,7 @@
           <div class="form-group">
             <label class="checkbox-label">
               <input type="checkbox" id="termsCheck" required>
-              <span id="termsText">I agree to the Annual Agreement terms ($150/mo base rate). I understand the $300 setup fee is waived in exchange for an initial 12-month commitment, transitioning to month-to-month afterward with preferred pricing retained.</span>
+              <span id="termsText">I agree to the Annual Agreement terms ($150/mo base rate). I understand the $200 setup fee is waived in exchange for an initial 12-month commitment, transitioning to month-to-month afterward with preferred pricing retained.</span>
             </label>
           </div>
 
@@ -2011,30 +2174,16 @@
 
       <div class="faq-grid">
         <div class="faq-item">
-          <h4>Do I need to purchase any software or email tools?</h4>
+          <h4>Are these generic or canned corporate emails?</h4>
           <p>
-            Nope. Both the sending platform and full creative service are included in your $150/month flat rate. You never have to pay for Mailchimp, MailerLite, Constant Contact, SendPulse, or any other third-party tool.
+            Never. Every monthly email is individually personalized to your location's voice. Along with a short 1-to-2 sentence personal note guided by our monthly prompt, every email is built with your direct float booking link, recurring membership sign-up link, click-to-call phone number, Google Maps directions, and your own signature.
           </p>
         </div>
 
         <div class="faq-item">
-          <h4>Are these generic or canned emails?</h4>
+          <h4>Do I need to pay for Mailchimp or any other email software?</h4>
           <p>
-            Never. Every monthly email is individually personalized to your location's voice. Along with a short personal note guided by our monthly prompt, every email is built with your direct float booking link, direct membership sign-up link, click-to-call phone number, Google Maps directions, and your own signature.
-          </p>
-        </div>
-
-        <div class="faq-item">
-          <h4>How much time will this take me each month?</h4>
-          <p>
-            About two minutes. We send you a fully written email to proof with a simple engagement prompt for you to write a one or two sentence story about a topic in that specific email for that month. You reply, give a quick thumbs-up, and we handle the scheduling, list hygiene, and deployment.
-          </p>
-        </div>
-
-        <div class="faq-item">
-          <h4>What happens after the initial 12-month agreement?</h4>
-          <p>
-            After completing your initial 12-month commitment, your service automatically transitions to month-to-month afterward with preferred pricing retained.
+            Nope. Both the dedicated sending platform and full creative service are included in your flat monthly rate. You never have to pay for Mailchimp, MailerLite, Constant Contact, SendPulse, or any other third-party tool, and there are zero contact-count penalty fees.
           </p>
         </div>
 
@@ -2046,13 +2195,90 @@
         </div>
 
         <div class="faq-item">
-          <h4>What is the deadline to launch in time for Black Friday?</h4>
+          <h4>What is the sign-up deadline, and what happens after the 12-month term?</h4>
           <p>
-            To guarantee your custom templates, booking links, and subscriber list are tested and active before Black Friday promotions begin, please enroll your location no later than <strong>November 10th</strong>.
+            <span id="dlFaq">Sign up by <strong>November 14th</strong> to lock in the lowest setup fee (waived on the 12-month and paid-in-full options, $200 on month-to-month) and to make sure your custom templates, booking links, and subscriber list are tested and active before Black Friday promotions begin. It is not a hard stop. We keep taking locations after the 14th, but the setup fee rises to $200 on the 12-month and paid-in-full options and $400 on month-to-month to cover the rush work.</span> For locations on the Annual Agreement, your service automatically transitions to month-to-month after the initial 12 months with your preferred $150/mo rate retained.
           </p>
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- About TSMC & Track Record Section -->
+  <section class="about-tsmc" id="about-tsmc">
+    <div class="container">
+      <div class="section-title-area">
+        <div class="section-tag">About The Agency &bull; Proven Results</div>
+        <h2 class="section-title">Who Is The Smart Marketing Co.?</h2>
+        <p class="section-subtitle">
+          A boutique marketing and client retention partner specializing in health, wellness, and float therapy centers.
+        </p>
+      </div>
+
+      <div class="about-tsmc-grid">
+        <div class="about-tsmc-story">
+          <h3>Proven Campaign Experience in Health &amp; Wellness</h3>
+          <p>
+            Founded by Chris Wagener, The Smart Marketing Co. (TSMC) is an independent marketing agency specializing in customer retention, membership upsells, and seasonal promotional campaigns for wellness practices and float therapy spas.
+          </p>
+          <p>
+            Rather than selling off-the-shelf software or churning out generic corporate newsletters, we operate as a hands-on marketing execution partner. We understand the real revenue drivers of a float center: turning one-time floaters into recurring monthly members, rebooking past guests into open pods, and maximizing cash revenue during holiday gift card promotions.
+          </p>
+          <p>
+            Having managed and executed dedicated email campaigns across multiple locations in <strong>New Jersey, Northern California, and Arizona</strong>, our broadcasts consistently maintain <strong>25% to 35% average open rates</strong> because they are built to read like genuine, personal notes from a local business rather than corporate spam.
+          </p>
+          <div class="about-founder-signature">
+            <strong>Chris Wagener</strong>
+            <span>Founder, The Smart Marketing Co.</span>
+          </div>
+        </div>
+
+        <div class="about-proof-panel" style="background: linear-gradient(135deg, var(--primary-navy) 0%, #092c46 100%); border-radius: 16px; padding: 32px 28px; color: #ffffff; box-shadow: 0 12px 30px rgba(11, 60, 93, 0.15);">
+          <div style="font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--vibrant-cyan); margin-bottom: 10px;">Verified Track Record</div>
+          <h4 style="font-size: 20px; font-weight: 800; color: #ffffff; margin-bottom: 12px; line-height: 1.3;">Battle-Tested Across Active Float Therapy Centers</h4>
+          <p style="font-size: 13.5px; color: #cbd5e1; line-height: 1.6; margin-bottom: 24px;">
+            Active across multi-location float therapy operations, driving consistent monthly membership upsells, repeat bookings, and holiday promo revenue with near-zero owner time.
+          </p>
+          <div class="proof-stats" style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+            <div class="stat-box" style="background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); border-radius: 12px; padding: 16px 12px; text-align: center;">
+              <div class="stat-number" style="font-size: 22px; font-weight: 800; color: var(--vibrant-cyan); margin-bottom: 4px;">25% - 35%</div>
+              <div class="stat-label" style="font-size: 11px; color: #e2e8f0; font-weight: 600;">Average Open Rate</div>
+            </div>
+            <div class="stat-box" style="background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); border-radius: 12px; padding: 16px 12px; text-align: center;">
+              <div class="stat-number" style="font-size: 22px; font-weight: 800; color: var(--vibrant-cyan); margin-bottom: 4px;">NJ &bull; CA &bull; AZ</div>
+              <div class="stat-label" style="font-size: 11px; color: #e2e8f0; font-weight: 600;">Proven Multi-State Markets</div>
+            </div>
+            <div class="stat-box" style="background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); border-radius: 12px; padding: 16px 12px; text-align: center;">
+              <div class="stat-number" style="font-size: 22px; font-weight: 800; color: var(--vibrant-cyan); margin-bottom: 4px;">~2 Mins</div>
+              <div class="stat-label" style="font-size: 11px; color: #e2e8f0; font-weight: 600;">Monthly Owner Review</div>
+            </div>
+            <div class="stat-box" style="background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); border-radius: 12px; padding: 16px 12px; text-align: center;">
+              <div class="stat-number" style="font-size: 22px; font-weight: 800; color: var(--vibrant-cyan); margin-bottom: 4px;">100%</div>
+              <div class="stat-label" style="font-size: 11px; color: #e2e8f0; font-weight: 600;">Client List Ownership</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final Action Strip (Bottom CTA) -->
+  <section class="bottom-cta">
+    <div class="container">
+      <div class="bottom-cta-box">
+        <div class="bottom-cta-content">
+          <div class="bottom-cta-tag" id="dlBottomTag">Sign Up by November 14th &bull; Setup Fee Waived</div>
+          <h3>Ready to Put Your Holiday Email Marketing on Autopilot?</h3>
+          <p>
+            <span id="dlBottomText">Enroll by November 14th to lock in the waived setup fee and make sure your custom templates, booking links, and Black Friday promotional campaigns launch on time.</span>
+          </p>
+        </div>
+        <div class="bottom-cta-action">
+          <a href="#enroll" class="btn-primary" style="padding: 16px 28px; font-size: 15px; box-shadow: 0 4px 18px rgba(0, 132, 200, 0.4);">Enroll Your Location Today &rarr;</a>
+          <span class="bottom-cta-sub">$150 / mo flat rate &bull; $0 setup on annual &bull; Cancel anytime on month-to-month</span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -2066,10 +2292,10 @@
         </div>
       </div>
       <div class="footer-links">
-        <a href="#what-is-included">What Is Included</a>
-        <a href="#performance">Performance</a>
-        <a href="#pricing">Pricing Terms</a>
+        <a href="#what-is-included">What's Included</a>
+        <a href="#pricing">Pricing</a>
         <a href="#faq">FAQ</a>
+        <a href="#about-tsmc">About &amp; Results</a>
         <a href="privacy-policy.html">Privacy Policy</a>
         <a href="terms-of-service.html">Terms of Service</a>
         <a href="#enroll">Enroll Location</a>
@@ -2129,6 +2355,41 @@
       }
     }
 
+    // Early-bird setup fee window: ends at the close of November 14, 2026 (Pacific Time, UTC-8).
+    // After that the page flips automatically. This is a soft deadline: enrollments are still accepted.
+    const EARLY_BIRD_END_MS = Date.parse('2026-11-15T08:00:00Z');
+
+    function isEarlyBird() {
+      return Date.now() < EARLY_BIRD_END_MS;
+    }
+
+    function currentSetupFees() {
+      return isEarlyBird() ? { annual: 0, paid: 0, m2m: 200 } : { annual: 200, paid: 200, m2m: 400 };
+    }
+
+    function applyDeadlineCopy() {
+      if (isEarlyBird()) { return; }
+      const late = {
+        dlHero: 'Enrollment Open: Setup Fees Now Apply',
+        dlAnnualSetup: '+$200 Setup Fee Upfront',
+        dlM2mSetup: '+$400 Setup Fee Upfront',
+        dlM2mFeature: '$400 due at start',
+        dlPaidFeature: '$200 due at start',
+        dlRadioPaid: '<strong>Annual Paid-in-Full:</strong> $1,500 / yr Single Location (Save $300, 2 Months Free) + $200 Setup Fee',
+        dlNote: 'The early-bird window that waived setup on the 12-month agreement closed on November 14th. Setup is now $200 on the 12-month and paid-in-full options and $400 on month-to-month, which covers the rush work of building and launching your location on a compressed holiday timeline. Following your initial 12-month commitment, service automatically transitions to month-to-month afterward with preferred pricing retained.',
+        dlEnrollTag: 'Fast Onboarding &bull; Enrollment Open',
+        dlRadioAnnual: '<strong>Annual Agreement:</strong> $150 / mo Single Location + $200 Setup Fee',
+        dlRadioM2m: '<strong>Flexible Month-to-Month:</strong> $200 / mo Single Location + $400 Setup Fee',
+        dlFaq: 'We are still enrolling locations. The early-bird window that waived setup on the 12-month agreement closed on November 14th, so setup is now $200 on the 12-month and paid-in-full options and $400 on month-to-month to cover the rush work. We will still work to get your custom templates, booking links, and subscriber list live ahead of Black Friday promotions.',
+        dlBottomTag: 'Enrollment Open &bull; Black Friday Ready',
+        dlBottomText: 'Enroll your location now and we will work to get your custom templates, booking links, and Black Friday promotional campaigns live on time.'
+      };
+      Object.keys(late).forEach(function(id) {
+        const el = document.getElementById(id);
+        if (el) { el.innerHTML = late[id]; }
+      });
+    }
+
     function updatePriceCalculation() {
       const locations = parseInt(document.getElementById('locationCount').value, 10);
       const selectedPlan = document.querySelector('input[name="servicePlan"]:checked').value;
@@ -2146,24 +2407,38 @@
         const base = 150;
         const addl = (locations - 1) * 100;
         const total = base + addl;
-        summaryText = `Monthly Investment (${locations} Location${locations > 1 ? 's' : ''}, Annual Agreement, $0 Setup Fee):`;
-        summaryVal = `$${total} / mo`;
-        termsCopy = `I agree to the Annual Agreement terms ($${total}/mo). I understand the $300 setup fee is waived in exchange for an initial 12-month commitment, transitioning to month-to-month afterward with preferred pricing retained.`;
+        const aSetup = currentSetupFees().annual;
+        if (aSetup === 0) {
+          summaryText = `Monthly Investment (${locations} Location${locations > 1 ? 's' : ''}, Annual Agreement, $0 Setup Fee):`;
+          summaryVal = `$${total} / mo`;
+          termsCopy = `I agree to the Annual Agreement terms ($${total}/mo). I understand the setup fee is waived because I am signing up by November 14th with an initial 12-month commitment, transitioning to month-to-month afterward with preferred pricing retained.`;
+        } else {
+          summaryText = `Initial Start Cost (${locations} Location${locations > 1 ? 's' : ''}: $${total}/mo + $${aSetup} Setup Fee):`;
+          summaryVal = `$${total + aSetup} to start`;
+          termsCopy = `I agree to the Annual Agreement terms ($${total}/mo for an initial 12-month commitment plus a one-time $${aSetup} onboarding setup fee due at start), transitioning to month-to-month afterward with preferred pricing retained.`;
+        }
       } else if (selectedPlan === 'paid_in_full') {
         const base = 1500;
         const addl = (locations - 1) * 1000;
         const total = base + addl;
-        summaryText = `Annual Investment (${locations} Location${locations > 1 ? 's' : ''}, Paid-in-Full, $0 Setup Fee):`;
-        summaryVal = `$${total} / yr`;
-        termsCopy = `I agree to the Annual Paid-in-Full terms ($${total}/yr with $0 setup fee and 2 months free), transitioning to month-to-month after the initial 12-month term with preferred pricing retained.`;
+        const pSetup = currentSetupFees().paid;
+        if (pSetup === 0) {
+          summaryText = `Annual Investment (${locations} Location${locations > 1 ? 's' : ''}, Paid-in-Full, $0 Setup Fee):`;
+          summaryVal = `$${total} / yr`;
+          termsCopy = `I agree to the Annual Paid-in-Full terms ($${total}/yr with $0 setup fee and 2 months free), transitioning to month-to-month after the initial 12-month term with preferred pricing retained.`;
+        } else {
+          summaryText = `Total Due Today (${locations} Location${locations > 1 ? 's' : ''}, Paid-in-Full: $${total}/yr + $${pSetup} Setup Fee):`;
+          summaryVal = `$${total + pSetup} to start`;
+          termsCopy = `I agree to the Annual Paid-in-Full terms ($${total}/yr with 2 months free plus a one-time $${pSetup} onboarding setup fee due at start), transitioning to month-to-month after the initial 12-month term with preferred pricing retained.`;
+        }
       } else if (selectedPlan === 'month_to_month') {
         const base = 200;
         const addl = (locations - 1) * 150;
         const monthly = base + addl;
-        const setup = 300;
+        const setup = currentSetupFees().m2m;
         summaryText = `Initial Start Cost (${locations} Location${locations > 1 ? 's' : ''}: $${monthly}/mo + $${setup} Setup Fee):`;
         summaryVal = `$${monthly + setup} to start`;
-        termsCopy = `I agree to the Flexible Month-to-Month terms ($${monthly}/mo plus the one-time $300 onboarding setup fee due at start). Cancel anytime with 30-day notice.`;
+        termsCopy = `I agree to the Flexible Month-to-Month terms ($${monthly}/mo plus the one-time $${setup} onboarding setup fee due at start). Cancel anytime with 30-day notice.`;
       }
 
       textElem.innerText = summaryText;
@@ -2197,15 +2472,18 @@
       if (selectedPlan === 'annual') {
         planTitle = "Annual Agreement";
         const total = 150 + (locations - 1) * 100;
-        amountStr = `$${total} / mo`;
+        const aSetupFee = currentSetupFees().annual;
+        amountStr = aSetupFee === 0 ? `$${total} / mo` : `$${total + aSetupFee} to start ($${total}/mo + $${aSetupFee} setup)`;
       } else if (selectedPlan === 'paid_in_full') {
         planTitle = "Annual Paid-in-Full";
         const total = 1500 + (locations - 1) * 1000;
-        amountStr = `$${total} / yr`;
+        const pSetupFee = currentSetupFees().paid;
+        amountStr = pSetupFee === 0 ? `$${total} / yr` : `$${total + pSetupFee} to start ($${total}/yr + $${pSetupFee} setup)`;
       } else if (selectedPlan === 'month_to_month') {
         planTitle = "Flexible Month-to-Month";
         const total = 200 + (locations - 1) * 150;
-        amountStr = `$${total + 300} to start ($${total}/mo)`;
+        const mSetupFee = currentSetupFees().m2m;
+        amountStr = `$${total + mSetupFee} to start ($${total}/mo + $${mSetupFee} setup)`;
       }
 
       // Update pop-up modal summary
@@ -2272,7 +2550,9 @@
     });
 
     document.addEventListener('DOMContentLoaded', function() {
+      applyDeadlineCopy();
       renderLocationFields();
+      updatePriceCalculation();
     });
   </script>
 </body>
